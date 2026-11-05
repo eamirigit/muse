@@ -2237,6 +2237,34 @@ var ConvCodecs = (function () {
         // gently. The colors are this style's own identity, so — unlike
         // the other modes — it does not follow the player themes.
         var SIRI_COLORS = [[15, 82, 169], [173, 57, 76], [48, 220, 155]];
+        function hslToRgb(h, s, l) { // h 0..360, s/l 0..100 -> [r, g, b] 0..255
+          s /= 100; l /= 100;
+          var c = (1 - Math.abs(2 * l - 1)) * s;
+          var x = c * (1 - Math.abs(((h / 60) % 2) - 1));
+          var m = l - c / 2, r, g, b;
+          if (h < 60) { r = c; g = x; b = 0; }
+          else if (h < 120) { r = x; g = c; b = 0; }
+          else if (h < 180) { r = 0; g = c; b = x; }
+          else if (h < 240) { r = 0; g = x; b = c; }
+          else if (h < 300) { r = x; g = 0; b = c; }
+          else { r = c; g = 0; b = x; }
+          return [Math.round((r + m) * 255), Math.round((g + m) * 255), Math.round((b + m) * 255)];
+        }
+        // Siri colors: the classic blue/red/green, unless Auto-from-cover
+        // is on — then the three wave groups take three hues spread across
+        // the cover palette, like every other visualizer mode. (Siri used
+        // to ignore the cover theme entirely, so Auto-from-cover looked
+        // broken whenever Siri was the active mode.)
+        function siriColors() {
+          if (coverColorsAuto && coverBandColors) {
+            return [
+              hslToRgb(coverBandColors[3].h, coverBandColors[3].s, 62),
+              hslToRgb(coverBandColors[12].h, coverBandColors[12].s, 62),
+              hslToRgb(coverBandColors[20].h, coverBandColors[20].s, 62)
+            ];
+          }
+          return SIRI_COLORS;
+        }
         var siriGroups = null;  // one curve array per color group
         var siriWhite = null;   // support-line curves
         var siriAmp = 0.08;     // reactive global amplitude, 0..1
@@ -2331,7 +2359,8 @@ var ConvCodecs = (function () {
           var vals = new Array(N);
           g.globalCompositeOperation = "lighter";
           // Color groups: filled specular (mirrored) wave shapes.
-          for (var gi = 0; gi < SIRI_COLORS.length; gi++) {
+          var siriCols = siriColors();
+          for (var gi = 0; gi < siriCols.length; gi++) {
             var curves = siriGroups[gi];
             var gain = gi === 1 ? 0.92 : 1;
             for (j = 0; j < N; j++) {
@@ -2347,7 +2376,7 @@ var ConvCodecs = (function () {
             }
             for (j = N - 1; j >= 0; j--) g.lineTo(j / (N - 1) * w, midY + vals[j]);
             g.closePath();
-            var col = SIRI_COLORS[gi];
+            var col = siriCols[gi];
             g.fillStyle = "rgba(" + col[0] + "," + col[1] + "," + col[2] + ",0.30)";
             g.fill();
           }
