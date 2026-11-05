@@ -12,38 +12,93 @@
     <style>
       :root {
         color-scheme: light dark;
-        --bg: #f3f1ec;
-        --panel: #ffffff;
-        --panel-2: #eae7e0;
-        --ink: #1c1a17;
-        --ink-soft: #6d675e;
-        --line: #ddd8cf;
-        --accent: #e05d00;
+        --bg: radial-gradient(640px 300px at 85% -40px, rgba(96, 165, 250, .38), transparent 70%), radial-gradient(520px 280px at 8% 140px, rgba(167, 139, 250, .30), transparent 70%), radial-gradient(480px 260px at 95% 620px, rgba(52, 199, 89, .14), transparent 70%), linear-gradient(180deg, #f6f8ff 0%, #f2f2f7 520px);
+        --panel: rgba(255, 255, 255, .72);
+        --panel-2: rgba(255, 255, 255, .52);
+        --ink: #1c1c1e;
+        --ink-soft: #6e6e73;
+        --line: rgba(0, 0, 0, .08);
+        --accent: #007aff;
         --accent-ink: #ffffff;
-        --accent-soft: rgba(224, 93, 0, 0.12);
+        --accent-soft: rgba(0, 122, 255, .10);
+        --accent-shadow: 0 8px 20px rgba(0, 122, 255, .35);
+        --fab-shadow: 0 10px 24px rgba(0, 122, 255, .35);
+        --go-shadow: 0 6px 16px rgba(0, 122, 255, .30);
         --viz-bg: #17140f;
-        --shadow: 0 10px 30px rgba(28, 26, 23, 0.10);
-        --radius: 18px;
+        --shadow: 0 4px 24px rgba(0, 0, 0, .06);
+        --radius: 24px;
+        --bad: #ff3b30;
+        --backdrop: rgba(0, 0, 0, .25);
       }
       @media (prefers-color-scheme: dark) {
         :root {
-          --bg: #0b0b0d;
-          --panel: #16161a;
-          --panel-2: #1f1f24;
-          --ink: #f2f0ec;
-          --ink-soft: #9b978e;
-          --line: #2a2a30;
-          --accent: #ff8a2a;
-          --accent-ink: #1a1206;
-          --accent-soft: rgba(255, 138, 42, 0.14);
-          --viz-bg: #101013;
-          --shadow: 0 10px 30px rgba(0, 0, 0, 0.45);
+        --bg: radial-gradient(640px 300px at 85% -40px, rgba(10, 132, 255, .22), transparent 70%), radial-gradient(520px 280px at 8% 140px, rgba(139, 92, 246, .18), transparent 70%), radial-gradient(480px 260px at 95% 620px, rgba(48, 209, 88, .08), transparent 70%), linear-gradient(180deg, #000000 0%, #1c1c1e 520px);
+        --panel: rgba(28, 28, 30, .72);
+        --panel-2: rgba(44, 44, 46, .60);
+        --ink: #f5f5f7;
+        --ink-soft: #98989d;
+        --line: rgba(255, 255, 255, .12);
+        --accent: #0a84ff;
+        --accent-ink: #ffffff;
+        --accent-soft: rgba(10, 132, 255, .16);
+        --accent-shadow: 0 8px 20px rgba(10, 132, 255, .40);
+        --fab-shadow: 0 10px 24px rgba(10, 132, 255, .40);
+        --go-shadow: 0 6px 16px rgba(10, 132, 255, .35);
+        --viz-bg: #101013;
+        --shadow: 0 4px 24px rgba(0, 0, 0, .45);
+        --radius: 24px;
+        --bad: #ff453a;
+        --backdrop: rgba(0, 0, 0, .45);
         }
+      }
+      /* iOS theme — manual Light / Dark (same values as Auto's system-driven modes) */
+      html[data-ui="ios"] {
+        --bg: radial-gradient(640px 300px at 85% -40px, rgba(96, 165, 250, .38), transparent 70%), radial-gradient(520px 280px at 8% 140px, rgba(167, 139, 250, .30), transparent 70%), radial-gradient(480px 260px at 95% 620px, rgba(52, 199, 89, .14), transparent 70%), linear-gradient(180deg, #f6f8ff 0%, #f2f2f7 520px);
+        --panel: rgba(255, 255, 255, .72);
+        --panel-2: rgba(255, 255, 255, .52);
+        --ink: #1c1c1e;
+        --ink-soft: #6e6e73;
+        --line: rgba(0, 0, 0, .08);
+        --accent: #007aff;
+        --accent-ink: #ffffff;
+        --accent-soft: rgba(0, 122, 255, .10);
+        --accent-shadow: 0 8px 20px rgba(0, 122, 255, .35);
+        --fab-shadow: 0 10px 24px rgba(0, 122, 255, .35);
+        --go-shadow: 0 6px 16px rgba(0, 122, 255, .30);
+        --viz-bg: #17140f;
+        --shadow: 0 4px 24px rgba(0, 0, 0, .06);
+        --radius: 24px;
+        --bad: #ff3b30;
+        --backdrop: rgba(0, 0, 0, .25);
+      }
+      html[data-ui="ios-dark"] {
+        --bg: radial-gradient(640px 300px at 85% -40px, rgba(10, 132, 255, .22), transparent 70%), radial-gradient(520px 280px at 8% 140px, rgba(139, 92, 246, .18), transparent 70%), radial-gradient(480px 260px at 95% 620px, rgba(48, 209, 88, .08), transparent 70%), linear-gradient(180deg, #000000 0%, #1c1c1e 520px);
+        --panel: rgba(28, 28, 30, .72);
+        --panel-2: rgba(44, 44, 46, .60);
+        --ink: #f5f5f7;
+        --ink-soft: #98989d;
+        --line: rgba(255, 255, 255, .12);
+        --accent: #0a84ff;
+        --accent-ink: #ffffff;
+        --accent-soft: rgba(10, 132, 255, .16);
+        --accent-shadow: 0 8px 20px rgba(10, 132, 255, .40);
+        --fab-shadow: 0 10px 24px rgba(10, 132, 255, .40);
+        --go-shadow: 0 6px 16px rgba(10, 132, 255, .35);
+        --viz-bg: #101013;
+        --shadow: 0 4px 24px rgba(0, 0, 0, .45);
+        --radius: 24px;
+        --bad: #ff453a;
+        --backdrop: rgba(0, 0, 0, .45);
+      }
+      /* iOS Liquid Glass — frosted panels, like the CP REBORN site */
+      .now, .panel, .modal, .search-wrap, .no-match {
+        -webkit-backdrop-filter: blur(16px) saturate(180%);
+        backdrop-filter: blur(16px) saturate(180%);
       }
       * { box-sizing: border-box; }
       html, body { margin: 0; padding: 0; }
       body {
-        font-family: "Segoe UI", system-ui, -apple-system, "Helvetica Neue", Arial, "Vazirmatn", Tahoma, sans-serif;
+        font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", system-ui, "Vazirmatn", Tahoma, sans-serif;
         background: var(--bg);
         color: var(--ink);
         -webkit-font-smoothing: antialiased;
@@ -80,7 +135,7 @@
       }
       .now-sub { color: var(--ink-soft); font-size: .86rem; margin-top: 2px; display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
       .status-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--ink-soft); display: inline-block; }
-      .status-dot.on { background: #3dbb48; box-shadow: 0 0 0 4px rgba(61,187,72,.18); }
+      .status-dot.on { background: #34c759; box-shadow: 0 0 0 4px rgba(52,199,89,.18); }
 
       /* ---------- Visualizer ---------- */
       .viz-card {
@@ -93,8 +148,8 @@
       }
       .viz-head .t { font-size: .85rem; font-weight: 700; letter-spacing: .01em; }
       .viz-head .badge {
-        font-size: .72rem; font-weight: 700; color: #ffb066;
-        border: 1px solid #ffb06655; border-radius: 999px; padding: 2px 10px;
+        font-size: .72rem; font-weight: 700; color: var(--accent);
+        border: 1px solid color-mix(in srgb, var(--accent) 35%, transparent); border-radius: 999px; padding: 2px 10px;
         direction: ltr;
       }
       #viz { display: block; width: 100%; height: 240px; }
@@ -220,7 +275,7 @@
       .btn.active { color: var(--accent); background: var(--accent-soft); }
       .btn.play {
         width: 62px; height: 62px; background: var(--accent); color: var(--accent-ink);
-        box-shadow: 0 8px 20px rgba(224, 93, 0, .35);
+        box-shadow: var(--accent-shadow);
       }
       .btn.play:hover { background: var(--accent); filter: brightness(1.07); }
       .btn.play svg { width: 30px; height: 30px; }
@@ -237,20 +292,33 @@
       .list-head h2 { font-size: 1rem; font-weight: 800; margin: 0; }
       .list-head .count { color: var(--ink-soft); font-size: .82rem; font-weight: 400; }
       /* ---------- Add tracks button (single, top of page) ---------- */
-      .topbar { display: flex; justify-content: flex-end; }
+      .topbar { display: flex; justify-content: flex-end; gap: 10px; }
       .add-fab {
         appearance: none; border: 0; cursor: pointer;
         width: 56px; height: 56px; border-radius: 50%;
-        background: linear-gradient(135deg, #ff9a3d, var(--accent));
+        background: var(--accent);
         color: var(--accent-ink);
         display: grid; place-items: center;
-        box-shadow: 0 10px 24px rgba(224, 93, 0, .45);
+        box-shadow: var(--fab-shadow);
         transition: transform .12s, filter .15s;
       }
       .add-fab:hover { filter: brightness(1.07); }
       .add-fab:active { transform: scale(.93); }
       .add-fab:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
       .add-fab svg { width: 28px; height: 28px; fill: currentColor; }
+      /* iOS theme switcher — Auto / Light / Dark, like the CP REBORN site */
+      .theme-fab {
+        appearance: none; border: 1px solid var(--line); cursor: pointer;
+        width: 56px; height: 56px; border-radius: 50%;
+        background: var(--panel); color: var(--ink);
+        display: grid; place-items: center; font-size: 24px; line-height: 1;
+        box-shadow: var(--shadow);
+        -webkit-backdrop-filter: blur(16px) saturate(180%);
+        backdrop-filter: blur(16px) saturate(180%);
+        transition: transform .12s;
+      }
+      .theme-fab:active { transform: scale(.94); }
+      .theme-fab:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
       .clear-btn {
         appearance: none; border: 1px solid var(--line); background: var(--panel); color: var(--ink-soft);
         font-family: inherit; font-size: .8rem; border-radius: 10px; padding: 8px 12px; cursor: pointer;
@@ -321,7 +389,7 @@
         border-radius: 999px; padding: 5px 11px 5px 6px; display: inline-flex; align-items: center; gap: 6px; cursor: pointer;
       }
       .tchip .sw { width: 14px; height: 14px; border-radius: 50%; flex: 0 0 auto; box-shadow: inset 0 0 0 1px rgba(255,255,255,.25); }
-      .tchip.active { border-color: #ffb066; color: #ffb066; background: rgba(255,176,102,.10); }
+      .tchip.active { border-color: var(--accent); color: var(--accent); background: var(--accent-soft); }
       .tchip:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
 
       /* ---------- Settings panel (EQ / speed / sleep) ---------- */
@@ -413,7 +481,7 @@
       .conv-bar i { display: block; height: 100%; width: 0%; background: var(--accent); border-radius: 999px; transition: width .15s ease; }
       .conv-item-foot { display: flex; align-items: center; justify-content: space-between; gap: 8px; margin-top: 8px; min-height: 30px; }
       .conv-state { font-size: .8rem; color: var(--ink-soft); font-variant-numeric: tabular-nums; }
-      .conv-state.err { color: #d43a2f; }
+      .conv-state.err { color: var(--bad); }
       .conv-dl {
         appearance: none; text-decoration: none; border: 0; background: var(--accent); color: var(--accent-ink);
         font-family: inherit; font-size: .8rem; font-weight: 700; border-radius: 999px; padding: 7px 13px;
@@ -427,7 +495,7 @@
       .conv-go {
         appearance: none; border: 0; background: var(--accent); color: var(--accent-ink);
         font-family: inherit; font-size: .9rem; font-weight: 700; border-radius: 999px; padding: 10px 20px; cursor: pointer;
-        box-shadow: 0 6px 16px rgba(224, 93, 0, .30); transition: transform .1s, filter .15s;
+        box-shadow: var(--go-shadow); transition: transform .1s, filter .15s;
       }
       .conv-go:hover { filter: brightness(1.07); }
       .conv-go:active { transform: scale(.96); }
@@ -490,7 +558,7 @@
 
       /* ---------- Track details modal ---------- */
       .modal-back {
-        position: fixed; inset: 0; z-index: 80; background: rgba(10, 8, 6, .55);
+        position: fixed; inset: 0; z-index: 80; background: var(--backdrop);
         display: grid; place-items: center; padding: 18px;
       }
       .modal {
@@ -510,12 +578,24 @@
 
       .hidden { display: none !important; }
     </style>
+    <script>
+      /* iOS theme — apply the saved mode before first paint (Auto / Light / Dark) */
+      try {
+        var _mt = localStorage.getItem('musicplayer_theme_v1') || 'auto';
+        var _mSysLight = !!(window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches);
+        if (_mt === 'light') { document.documentElement.setAttribute('data-ui', 'ios'); }
+        else if (_mt === 'dark') { document.documentElement.setAttribute('data-ui', 'ios-dark'); }
+        else if (_mSysLight) { document.documentElement.setAttribute('data-ui', 'ios'); }
+        else { document.documentElement.setAttribute('data-ui', 'ios-dark'); }
+      } catch (e) {}
+    </script>
   </head>
   <body>
     <div class="wrap">
 
       <!-- Add tracks -->
       <div class="topbar">
+        <button class="theme-fab" id="themeBtn" title="Theme: Auto" aria-label="Theme: Auto">📱</button>
         <button class="add-fab" id="addBtn" title="Add tracks" aria-label="Add music files">
           <svg viewBox="0 0 24 24"><path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"/></svg>
         </button>
@@ -4152,6 +4232,35 @@ var ConvCodecs = (function () {
 
         renderPlaylist();
         updatePlayUI();
+      })();
+    </script>
+    <script>
+      /* iOS theme switcher — cycles Auto -> Light -> Dark, like the CP REBORN site */
+      (function () {
+        var KEY = 'musicplayer_theme_v1';
+        var btn = document.getElementById('themeBtn');
+        if (!btn) return;
+        function stored() { try { return localStorage.getItem(KEY) || 'auto'; } catch (e) { return 'auto'; } }
+        function sysLight() { return !!(window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches); }
+        function apply(mode) {
+          if (mode === 'light') { document.documentElement.setAttribute('data-ui', 'ios'); }
+          else if (mode === 'dark') { document.documentElement.setAttribute('data-ui', 'ios-dark'); }
+          else { document.documentElement.setAttribute('data-ui', sysLight() ? 'ios' : 'ios-dark'); }
+          var icon = mode === 'light' ? '☀️' : (mode === 'dark' ? '🌙' : '📱');
+          var label = mode === 'light' ? 'Theme: Light' : (mode === 'dark' ? 'Theme: Dark' : 'Theme: Auto');
+          btn.textContent = icon; btn.setAttribute('aria-label', label); btn.title = label;
+        }
+        var order = ['auto', 'light', 'dark'];
+        btn.addEventListener('click', function () {
+          var cur = stored();
+          var next = order[(order.indexOf(cur) + 1) % order.length];
+          try { localStorage.setItem(KEY, next); } catch (e) {}
+          apply(next);
+        });
+        if (window.matchMedia) {
+          try { window.matchMedia('(prefers-color-scheme: light)').addEventListener('change', function () { if (stored() === 'auto') apply('auto'); }); } catch (e) {}
+        }
+        apply(stored());
       })();
     </script>
   </body>
